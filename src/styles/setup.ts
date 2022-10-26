@@ -1,5 +1,4 @@
 import { createStitches } from '@stitches/react'
-
 export const { styled, getCssText, globalCss, config, keyframes } =
   createStitches({
     media: {
@@ -15,8 +14,10 @@ export const { styled, getCssText, globalCss, config, keyframes } =
         blue700: '#37466B',
         blue900: '#192031',
         white: '#ffffff',
-        black: '#000000'
+        black: '#000000',
+        green: '#0C3807'
       },
+
       space: {
         1: '0.5rem',
         2: '1rem',

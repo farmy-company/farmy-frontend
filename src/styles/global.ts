@@ -16,6 +16,8 @@ export const globalStyles = globalCss({
   },
 
   body: {
-    size: '100%'
+    size: '100%',
+    backgroundColor: '$green',
+    fontFamily: '$primary'
   }
 })
