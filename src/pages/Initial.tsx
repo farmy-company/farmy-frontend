@@ -1,5 +1,10 @@
 import { Headers } from '@/components/Header/Headers'
+import { Item } from '@/components/Item/Item'
 import { styled } from '@/styles/setup'
+
+// import A from '../../public/animal.png'
+// import B from '../../public/Money.png'
+// import C from '../../public/Wallet,Money.png'
 export const Initial = () => {
   return (
     <Container>
@@ -22,6 +27,20 @@ export const Initial = () => {
           </GroupLogin>
         </ALS>
       </Wrapper>
+      <Text>
+        <h1>
+          Modelo de Gestão + <span>Software</span>=<button>Logo</button>
+        </h1>
+      </Text>
+
+      <Content>
+        <Item title={'Gerenciamento de Animais'} image="/animal.png" />
+        <Item title={'Análise de dados e Dashboards'} image="/Money.png" />
+        <Item
+          title={'Recortes e gerência do seu financeiro'}
+          image="/wallet.png"
+        />
+      </Content>
     </Container>
   )
 }
@@ -101,4 +120,18 @@ const GroupText = styled('div', {
   h3: {
     fontSize: '$5'
   }
+})
+const Text = styled('div', {
+  h1: {
+    fontSize: '$6',
+    color: '#FFF',
+    marginTop: ' 10px',
+    span: {
+      fontWeight: 'bold'
+    }
+  }
+})
+const Content = styled('div', {
+  display: 'flex',
+  gap: '10px'
 })
