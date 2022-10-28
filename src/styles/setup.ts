@@ -1,8 +1,9 @@
 import { createStitches } from '@stitches/react'
+
 export const { styled, getCssText, globalCss, config, keyframes } =
   createStitches({
     media: {
-      medium: '(width <= 768px)'
+      medium: '(max-width: 768px)'
     },
     theme: {
       colors: {
@@ -17,11 +18,13 @@ export const { styled, getCssText, globalCss, config, keyframes } =
         black: '#000000',
         green: '#0C3807'
       },
-
       space: {
         1: '0.5rem',
         2: '1rem',
         3: '1.5rem'
+      },
+      sizes: {
+        1: '108rem'
       },
       fontSizes: {
         1: '1.2rem',
@@ -41,9 +44,6 @@ export const { styled, getCssText, globalCss, config, keyframes } =
         2: '2.4rem',
         3: '3.6rem',
         4: '4.8rem'
-      },
-      sizes: {
-        1: '108rem'
       },
       borderWidths: {
         1: '1px',
