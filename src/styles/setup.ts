@@ -9,14 +9,17 @@ export const { styled, getCssText, globalCss, config, keyframes } =
       colors: {
         gray50: '#FAFAFA',
         gray200: '#D9D9D9',
+        gray400: '#94a3b8',
         gray600: '#424B54',
+        gray700: '#374151',
         gray900: '#212529',
         blue300: '#0275D8',
         blue700: '#37466B',
         blue900: '#192031',
+        slate900: '#0f172a',
         white: '#ffffff',
         black: '#000000',
-        green: '#0C3807'
+        green600: '#16a34a'
       },
       space: {
         1: '0.5rem',

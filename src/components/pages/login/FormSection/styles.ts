@@ -24,18 +24,6 @@ export const Container = styled('section', {
     zIndex: '0',
 
     backgroundColor: 'rgba(0, 0, 0, 0.8)'
-  },
-
-  button: {
-    // borderRadius: '3rem', // 30px,
-    width: '10rem',
-    height: '4rem',
-    backgroundColor: 'transparent',
-
-    color: 'rgba(5, 255, 0, 1)',
-    borderColor: '#FFF',
-    fontSize: '2rem',
-    cursor: 'pointer'
   }
 })
 
@@ -51,10 +39,14 @@ export const Wrapper = styled('div', {
 
   zIndex: '$max',
 
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '4rem',
+  justifyContent: 'center',
+  alignItems: 'center',
+
   '@media (min-width: 768px)': {
-    display: 'flex',
-    gap: '4rem',
-    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'space-between'
   }
 })
@@ -62,62 +54,79 @@ export const Wrapper = styled('div', {
 export const Form = styled('form', {
   display: 'flex',
   flexDirection: 'column',
-  width: '400px',
-  height: '500px',
-  border: '2px solid #FFF',
   justifyContent: 'center',
   alignItems: 'center',
-  h1: {
-    color: '#fff',
-    fontSize: '$6',
-    alignItems: 'center',
-    textAlign: 'center',
-    marginBottom: '20px'
-  },
+  gap: '2rem',
+  width: 'min(100%, 500px)',
+
+  padding: '5rem',
+  borderRadius: '$1',
+
+  backgroundColor: '$slate900',
+
   button: {
-    borderRadius: '3rem',
-    width: '100px',
-    height: '40px',
-    backgroundColor: '#27B82B',
-    color: '#FFF',
-    fontSize: '20px',
+    marginTop: '1.6rem',
+    borderRadius: '$1',
+    width: '100%',
+    backgroundColor: '$green600',
+    color: '$white',
+    fontSize: '2rem',
     cursor: 'pointer',
-    marginLeft: '28rem'
+    border: 'none',
+    padding: '1.3rem',
+
+    transition: 'filter 0.4s ease',
+
+    '&:hover': {
+      filter: 'brightness(0.8)'
+    }
   },
+
   input: {
-    width: '30rem',
-    height: '5rem',
-    paddingLeft: '10px',
-    marginBottom: '25px',
-    backgroundColor: '$green'
+    borderRadius: '$1',
+    width: '100%',
+    padding: '1.7rem 3rem',
+    backgroundColor: '$gray700',
+    border: 'none',
+    color: '$white',
+    fontSize: '1.5rem',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: '$gray700',
+    outline: 'none',
+
+    transition: 'border 0.5s ease',
+
+    '&:focus': {
+      borderColor: '$green600'
+    },
+
+    '&::placeholder': {
+      color: '$gray400'
+    }
   }
 })
 
 export const GroupText = styled('div', {
   display: 'flex',
-  width: '400px',
   flexDirection: 'column',
-  color: '#FFF',
+  gap: '2rem',
+  width: 'min(100%, 400px)',
+  color: '$white',
+
   h1: {
-    fontSize: '$7'
+    fontSize: '5rem'
   },
-  h3: {
-    fontSize: '$5'
+
+  p: {
+    fontSize: '$3',
+    color: '$gray200'
   }
 })
 
-export const Text = styled('div', {
-  h1: {
-    fontSize: '$6',
-    color: '#FFF',
-    marginTop: ' 10px',
-    span: {
-      fontWeight: 'bold'
-    }
-  }
-})
-
-export const Content = styled('div', {
-  display: 'flex',
-  gap: '10px'
+export const Logo = styled('span', {
+  color: '$white',
+  fontWeight: 'bolder',
+  fontFamily: '$secondary',
+  fontSize: '$4'
 })
