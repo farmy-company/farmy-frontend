@@ -8,7 +8,7 @@ export const globalStyles = globalCss({
   },
 
   html: {
-    fontSize: '62.5%', // 1rem === 10px // 100% === 16px
+    fontSize: '62.5%', // 1rem === 10px // 100% === 16px -> 1rem === 16px
 
     '@medium': {
       fontSize: '50%' // 1rem === 8px
