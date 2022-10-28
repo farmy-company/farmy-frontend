@@ -1,11 +1,9 @@
 import { Headers } from '@/components/Header/Headers'
 import { Item } from '@/components/Item/Item'
+
 import { styled } from '@/styles/setup'
 
-// import A from '../../public/animal.png'
-// import B from '../../public/Money.png'
-// import C from '../../public/Wallet,Money.png'
-export const Initial = () => {
+const Login = () => {
   return (
     <Container>
       <Headers />
@@ -44,6 +42,9 @@ export const Initial = () => {
     </Container>
   )
 }
+
+export default Login
+
 const Container = styled('div', {
   display: 'flex',
   position: 'relative',
