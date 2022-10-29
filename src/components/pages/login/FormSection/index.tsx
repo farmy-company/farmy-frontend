@@ -6,9 +6,7 @@ export const FormSection = () => {
       <S.Wrapper>
         <S.GroupText>
           <S.Logo>Farmy</S.Logo>
-          <h1>
-            Software <br /> Para Gestão <br /> de Fazendas
-          </h1>
+          <h1>Software para Gestão de Fazendas</h1>
           <p>Gerencie toda sua propriedade agrícola em um só lugar!</p>
         </S.GroupText>
         <S.Form>

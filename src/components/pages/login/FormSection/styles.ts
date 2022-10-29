@@ -42,8 +42,8 @@ export const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '4rem',
-  alignItems: 'center',
   justifyContent: 'center',
+  alignItems: 'center',
 
   '@media (min-width: 768px)': {
     flexDirection: 'row',
