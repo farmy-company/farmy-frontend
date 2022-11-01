@@ -1,6 +1,8 @@
 import * as S from './styles'
 import Image from 'next/image'
 import content from '../../../public/image3.png'
+import Link from 'next/link';
+
 export const Form = () => {
   return (
     <S.Container>
@@ -29,7 +31,7 @@ export const Form = () => {
           </S.ElementosEsquerda>
           <S.ElementosDireita>
             <Image src={content} alt="content" />
-            <button>Proximo</button>
+            <Link href="/escrituracao2">Próximo</Link>
             <button>Salvar</button>
           </S.ElementosDireita>
         </S.GroupCadastro>
