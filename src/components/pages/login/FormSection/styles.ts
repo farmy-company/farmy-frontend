@@ -130,3 +130,23 @@ export const Logo = styled('span', {
   fontFamily: '$secondary',
   fontSize: '$4'
 })
+
+export const Message = styled('p', {
+  color: '$white',
+  fontSize: '1.4rem'
+})
+
+export const Loading = styled('div', {
+  backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  backdropFilter: 'blur(20px)',
+  display: 'grid',
+  placeItems: 'center',
+  fontSize: '2rem',
+  color: 'white',
+  position: 'absolute',
+  top: '0',
+  left: 0,
+  width: '100vw',
+  height: '100vh',
+  zIndex: '1000'
+})

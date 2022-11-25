@@ -44,7 +44,10 @@ const handler: NextApiHandler = async (req, res) => {
     })
   }
 
-  const token = jwt.sign({ user_id: user.id }, process.env.SECRET_KEY as string)
+  const token = jwt.sign(
+    { user_id: user.id, username: user.username },
+    process.env.SECRET_KEY as string
+  )
 
   return res.json({
     message: token
