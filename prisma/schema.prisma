@@ -31,6 +31,7 @@ model Module {
   id          Int         @id @default(autoincrement()) @map("AC02A_ID")
   description String      @map("AC02A_DESCRICAO") @db.VarChar(32)
   farm_id     Int         @map("AC02A_ID_FAZENDA")
+  farm        Farm        @relation(fields: [farm_id], references: [id])
   created_at  DateTime    @default(now()) @map("__created_at")
   created_by  Int         @map("__created_by")
   Permition   Permition[]
@@ -78,6 +79,7 @@ model Farm {
   Sector                 Sector[]
   Role                   Role[]
   User                   User[]
+  Module                 Module[]
 
   @@unique([cnpj])
   @@map("CD01_FAZENDA")
