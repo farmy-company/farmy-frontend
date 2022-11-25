@@ -9,3 +9,127 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Permition {
+  id         Int      @id @default(autoincrement()) @map("AC02_ID")
+  user_id    Int      @map("AC02_ID_USUARIO")
+  user       User     @relation(fields: [user_id], references: [id])
+  module_id  Int      @map("AC02_ID_MODULO")
+  module     Module   @relation(fields: [module_id], references: [id])
+  create     Boolean  @default(false) @map("AC02_CREATE")
+  delete     Boolean  @default(false) @map("AC02_DELETE")
+  update     Boolean  @default(false) @map("AC02_UPDATE")
+  read       Boolean  @default(false) @map("AC02_READ")
+  created_at DateTime @default(now()) @map("__created_at")
+  created_by Int      @map("__created_by")
+
+  @@unique([user_id])
+  @@map("AC02_PERMISSAO")
+}
+
+model Module {
+  id          Int         @id @default(autoincrement()) @map("AC02A_ID")
+  description String      @map("AC02A_DESCRICAO") @db.VarChar(32)
+  farm_id     Int         @map("AC02A_ID_FAZENDA")
+  created_at  DateTime    @default(now()) @map("__created_at")
+  created_by  Int         @map("__created_by")
+  Permition   Permition[]
+
+  @@unique([description])
+  @@map("AC02A_MODULO")
+}
+
+model User {
+  id          Int         @id @default(autoincrement()) @map("AC01_ID")
+  username    String      @map("AC01_USERNAME") @db.VarChar(32)
+  password    String      @map("AC01_PASSWORD") @db.VarChar(50)
+  is_admin    Boolean     @default(false) @map("AC01_ADMIN")
+  employee_id Int?        @map("AC01_ID_FUNCIONARIO")
+  employe     Employee?   @relation(fields: [employee_id], references: [id])
+  farm_id     Int?        @map("AC01_ID_FAZENDA")
+  farm        Farm?       @relation(fields: [farm_id], references: [id])
+  created_at  DateTime    @default(now()) @map("__created_at")
+  created_by  Int?        @map("__created_by")
+  Permition   Permition[]
+
+  @@unique([employee_id])
+  @@map("AC01_USUARIO")
+}
+
+model Farm {
+  id                     Int      @id @default(autoincrement()) @map("CD01_ID")
+  cnpj                   String   @map("CD01_CNPJ") @db.VarChar(14)
+  name                   String   @map("CD01_NOME_FANTASIA") @db.VarChar(32)
+  total_field_area       Decimal  @map("CD01_AREA_TOTAL") @db.Decimal(32, 8)
+  corporate_name         String   @map("CD01_RAZAO_SOCIAL") @db.VarChar(32)
+  disctrict_subscription String   @map("CD01_INSCRICAO_ESTADUAL") @db.VarChar(9)
+  street                 String?  @map("CD01_RUA") @db.VarChar(36)
+  district               String?  @map("CD01_BAIRRO") @db.VarChar(36)
+  zipCode                String   @map("CD01_CEP") @db.VarChar(8)
+  city                   String?  @map("CD01_CIDADE") @db.VarChar(36)
+  uf                     String?  @map("CD01_UF") @db.VarChar(2)
+  phone_area_code        String?  @map("CD01_DDD_TELEFONE") @db.VarChar(2)
+  phone                  String?  @map("CD01_TELEFONE") @db.VarChar(9)
+  cell_area_code         String   @map("CD01_DDD_CELULAR") @db.VarChar(2)
+  cell                   String   @map("CD01_CELULAR") @db.VarChar(9)
+  email                  String   @map("CD01_EMAIL") @db.VarChar(64)
+  created_at             DateTime @default(now()) @map("__created_at")
+  created_by             Int?     @map("__created_by")
+  Sector                 Sector[]
+  Role                   Role[]
+  User                   User[]
+
+  @@unique([cnpj])
+  @@map("CD01_FAZENDA")
+}
+
+model Employee {
+  id              Int      @id @default(autoincrement()) @map("CD04_ID")
+  name            String   @map("CD04_NOME") @db.VarChar(32)
+  email           String   @map("CD04_EMAIL") @db.VarChar(64)
+  cpf             String   @map("CD04_CPF") @db.VarChar(11)
+  street          String?  @map("CD04_RUA") @db.VarChar(36)
+  district        String?  @map("CD04_BAIRRO") @db.VarChar(36)
+  zipCode         String   @map("CD04_CEP") @db.VarChar(8)
+  city            String?  @map("CD04_CIDADE") @db.VarChar(36)
+  uf              String?  @map("CD04_UF") @db.VarChar(2)
+  phone_area_code String?  @map("CD04_DDD_TELEFONE") @db.VarChar(2)
+  phone           String?  @map("CD04_TELEFONE") @db.VarChar(9)
+  cell_area_code  String   @map("CD04_DDD_CELULAR") @db.VarChar(2)
+  cell            String   @map("CD04_CELULAR") @db.VarChar(9)
+  role_id         Int      @map("CD04_ID_CARGO")
+  created_at      DateTime @default(now()) @map("__created_at")
+  created_by      Int      @map("__created_by")
+  User            User?
+
+  @@unique([cpf])
+  @@map("CD04_FUNCIONARIO")
+}
+
+model Sector {
+  id          Int      @id @default(autoincrement()) @map("CD04A_ID")
+  farm_id     Int      @map("CD04A_ID_FAZENDA")
+  farm        Farm     @relation(fields: [farm_id], references: [id])
+  description String   @map("CD04A_DESCRICAO") @db.VarChar(32)
+  created_at  DateTime @default(now()) @map("__created_at")
+  created_by  Int      @map("__created_by")
+  Role        Role[]
+
+  @@unique([description])
+  @@map("CD04A_SETOR")
+}
+
+model Role {
+  id          Int      @id @default(autoincrement()) @map("CD04B_ID")
+  farm_id     Int      @map("CD04B_ID_FAZENDA")
+  farm        Farm     @relation(fields: [farm_id], references: [id])
+  sector_id   Int      @map("CD04B_ID_SETOR")
+  sector      Sector   @relation(fields: [sector_id], references: [id])
+  description String   @map("CD04B_DESCRICAO") @db.VarChar(32)
+  salary      Decimal  @map("CD04B_SALARIO") @db.Decimal(16, 4)
+  created_at  DateTime @default(now()) @map("__created_at")
+  created_by  Int      @map("__created_by")
+
+  @@unique([description])
+  @@map("CD04B_CARGO")
+}
