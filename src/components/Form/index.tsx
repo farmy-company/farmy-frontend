@@ -1,7 +1,7 @@
 import * as S from './styles'
 import Image from 'next/image'
-import content from '../../../public/image3.png'
-import Link from 'next/link';
+import content from '@/public/image3.png'
+import Link from 'next/link'
 
 export const Form = () => {
   return (
